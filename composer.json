@@ -1,0 +1,17 @@
+{
+    "name": "vlad-iliescu/laravel-thruway",
+    "description": "A Ratchet Thruway Server built for Laravel",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Vlad-Iliescu",
+            "email": "vlad.iliescu.88@gmail.com"
+        }
+    ],
+    "require": {
+        "voryx/thruway": "^0.5.3",
+        "cboden/ratchet": "^0.4.1",
+        "react/zmq": "^0.4.0"
+    }
+}
