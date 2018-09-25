@@ -9,6 +9,11 @@
             "email": "vlad.iliescu.88@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "LaravelThruway\\": "src"
+        }
+    },
     "require": {
         "voryx/thruway": "^0.5.3",
         "cboden/ratchet": "^0.4.1",
