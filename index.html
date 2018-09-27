@@ -8,7 +8,7 @@
 
 <script type="application/javascript" src="autobahn.js"></script>
 <script>
-    var conn = new ab.Session('ws://localhost:8080',
+    var conn = new ab.Session('ws://localhost:9090',
         function() {
             conn.subscribe('kittensCategory', function(topic, data) {
                 // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
