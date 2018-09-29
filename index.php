@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 
 $entryData = array(
-    'category' => "kittensCategory",
+    'category' => "com.myapp.hello",
     'title' => "my_title",
     'article' => "my_article",
     'when' => time()

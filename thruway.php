@@ -1,16 +1,20 @@
 <?php
 
-use LaravelThruway\RatchetTransportProvider;
+use React\EventLoop\Factory;
+use React\ZMQ\Context;
+use Thruway\ClientSession;
 use Thruway\Peer\Client;
+use Thruway\Peer\Router;
+use Thruway\Transport\RatchetTransportProvider;
 
 require 'vendor/autoload.php';
 
 $pusher = new Client("realm1");
 
-$loop = React\EventLoop\Factory::create();
+$loop = Factory::create();
 
-$pusher->on('open', function ($session) use ($loop) {
-    $context = new React\ZMQ\Context($loop);
+$pusher->on('open', function (ClientSession $session) use ($loop) {
+    $context = new Context($loop);
     $pull = $context->getSocket(ZMQ::SOCKET_PULL);
     $pull->bind('tcp://127.0.0.1:5555');
 
@@ -22,7 +26,7 @@ $pusher->on('open', function ($session) use ($loop) {
     });
 });
 
-$router = new Thruway\Peer\Router($loop);
+$router = new Router($loop);
 $router->addInternalClient($pusher);
-$router->addTransportProvider(new Thruway\Transport\RatchetTransportProvider("0.0.0.0", 7474));
+$router->addTransportProvider(new RatchetTransportProvider("0.0.0.0", 7474));
 $router->start();
