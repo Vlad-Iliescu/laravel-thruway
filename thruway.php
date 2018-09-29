@@ -29,4 +29,8 @@ $pusher->on('open', function (ClientSession $session) use ($loop) {
 $router = new Router($loop);
 $router->addInternalClient($pusher);
 $router->addTransportProvider(new RatchetTransportProvider("0.0.0.0", 7474));
-$router->start();
+try {
+    $router->start();
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
