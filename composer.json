@@ -17,6 +17,8 @@
     "require": {
         "voryx/thruway": "^0.5.3",
         "cboden/ratchet": "^0.4.1",
-        "react/zmq": "^0.4.0"
+        "react/zmq": "^0.4.0",
+        "ext-zmq": "*",
+        "ext-json": "*"
     }
 }
