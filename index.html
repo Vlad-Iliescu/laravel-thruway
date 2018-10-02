@@ -12,6 +12,7 @@
 
     connection.onopen = function (session) {
 
+        window.session =session;
         // 1) subscribe to a topic
         function onevent(args) {
             console.log("Event:", args[0]);

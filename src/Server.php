@@ -5,7 +5,9 @@ namespace LaravelThruway;
 use LaravelThruway\Exceptions\ThruwayServerException;
 use React\ZMQ\Context;
 use Thruway\Logging\Logger;
+use Thruway\Message\Message;
 use Thruway\Peer\Client;
+use Thruway\Transport\TransportInterface;
 use ZMQ;
 
 class Server extends Client implements ServerInterface
@@ -93,4 +95,15 @@ class Server extends Client implements ServerInterface
 
         $this->getSession()->publish($channel, [$entryData]);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function onMessage(TransportInterface $transport, Message $msg)
+    {
+        file_put_contents('f1', var_export($msg, true));
+        parent::onMessage($transport, $msg);
+    }
+
+
 }

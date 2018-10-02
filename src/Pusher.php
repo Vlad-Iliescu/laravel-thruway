@@ -40,7 +40,7 @@ class Pusher
      * @param string $host
      * @param int $port
      */
-    public function __construct($host = '127.0.0.1', $port = 8080)
+    public function __construct($host = '127.0.0.1', $port = 5555)
     {
         $this->zmqHost = $host;
         $this->zmqPort = $port;
