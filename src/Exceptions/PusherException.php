@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelThruway;
+namespace LaravelThruway\Exceptions;
 
 
 class PusherException extends \RuntimeException

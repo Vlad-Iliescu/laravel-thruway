@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 $loop   = React\EventLoop\Factory::create();
 
-$pusher = new \LaravelThruway\Pusher();
+$pusher = new \LaravelThruway\Server();
 
 
 // Listen for the web server to make a ZeroMQ push after an ajax request

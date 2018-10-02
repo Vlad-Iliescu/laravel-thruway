@@ -14,11 +14,20 @@
             "LaravelThruway\\": "src"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelThruway\\Providers\\LaravelThruwayServiceProvider"
+            ]
+        }
+    },
     "require": {
         "voryx/thruway": "^0.5.3",
         "cboden/ratchet": "^0.4.1",
         "react/zmq": "^0.4.0",
         "ext-zmq": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "illuminate/console": "^5.7",
+        "illuminate/support": "^5.7"
     }
 }

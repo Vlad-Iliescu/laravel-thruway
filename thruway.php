@@ -20,8 +20,8 @@ $pusher->on('open', function (ClientSession $session) use ($loop) {
 
     $pull->on('message', function ($entry) use ($session) {
         $entryData = json_decode($entry, true);
-        if (isset($entryData['category'])) {
-            $session->publish($entryData['category'], [$entryData]);
+        if (isset($entryData['ws_channel'])) {
+            $session->publish($entryData['ws_channel'], [$entryData]);
         }
     });
 });

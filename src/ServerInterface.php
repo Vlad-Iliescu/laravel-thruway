@@ -3,7 +3,7 @@
 namespace LaravelThruway;
 
 
-interface PusherInterface
+interface ServerInterface
 {
     /**
      * This is meant to be overridden so that the client can do its
