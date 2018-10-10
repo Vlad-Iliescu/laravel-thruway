@@ -27,11 +27,6 @@ class LaravelThruwayServiceProvider extends ServiceProvider
         $this->commands('command.thruway.serve');
 
         $this->mergeConfigFrom(__DIR__ . '/../config/thruway.php', 'thruway');
-
-        $this->app->make(Factory::class)
-            ->extend('zmq', function ($app) {
-                return new ZmqBroadcaster($this->app[Pusher::class]);
-            });
     }
 
     /**
@@ -44,6 +39,11 @@ class LaravelThruwayServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/ratchet.php' => config_path('thruway.php'),
         ]);
+
+        $this->app->make(Factory::class)
+            ->extend('zmq', function ($app) {
+                return new ZmqBroadcaster($this->app[Pusher::class]);
+            });
     }
 
     /**
