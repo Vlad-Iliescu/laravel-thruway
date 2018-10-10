@@ -28,6 +28,9 @@
         "ext-zmq": "*",
         "ext-json": "*",
         "illuminate/console": "^5.7",
-        "illuminate/support": "^5.7"
+        "illuminate/support": "^5.7",
+        "illuminate/broadcasting": "^5.7",
+        "illuminate/http": "^5.7",
+        "illuminate/contracts": "^5.7"
     }
 }

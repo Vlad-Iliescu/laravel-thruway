@@ -2,7 +2,9 @@
 
 namespace LaravelThruway\Providers;
 
+use Illuminate\Contracts\Broadcasting\Factory;
 use Illuminate\Support\ServiceProvider;
+use LaravelThruway\Broadcasting\Broadcaster\ZmqBroadcaster;
 use LaravelThruway\Console\Commands\ThruwayServerCommand;
 use LaravelThruway\Pusher;
 
@@ -25,6 +27,11 @@ class LaravelThruwayServiceProvider extends ServiceProvider
         $this->commands('command.thruway.serve');
 
         $this->mergeConfigFrom(__DIR__ . '/../config/thruway.php', 'thruway');
+
+        $this->app->make(Factory::class)
+            ->extend('zmq', function ($app) {
+                return new ZmqBroadcaster($this->app[Pusher::class]);
+            });
     }
 
     /**
