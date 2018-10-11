@@ -3,6 +3,7 @@
 namespace LaravelThruway\Broadcasting\Broadcaster;
 
 
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\Broadcasters\Broadcaster;
 use Illuminate\Support\Str;
 use LaravelThruway\Pusher;
@@ -71,7 +72,7 @@ class ZmqBroadcaster extends Broadcaster
     /**
      * Broadcast the given event.
      *
-     * @param  array $channels
+     * @param  Channel[] $channels
      * @param  string $event
      * @param  array $payload
      * @return void
@@ -79,8 +80,8 @@ class ZmqBroadcaster extends Broadcaster
     public function broadcast(array $channels, $event, array $payload = [])
     {
         $payload['ws_event'] = $event;
-        foreach ($channels as $chanel) {
-            $this->pusher->push($chanel, $payload);
+        foreach ($channels as $channel) {
+            $this->pusher->push($channel->name, $payload);
         }
     }
 }

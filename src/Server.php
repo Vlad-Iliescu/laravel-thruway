@@ -63,11 +63,9 @@ class Server extends Client implements ServerInterface
      */
     public function onSessionStart($session, $transport)
     {
-        $session->subscribe('com.myapp.hello', function ($args) {
-            Logger::info($this, "Event {$args[0]}\n");
-        });
-
         Logger::info($this, "Client onSessionStart");
+
+        $this->createSubscriptions($session, $transport);
 
         $context = new Context($this->getLoop());
         $pull = $context->getSocket($this->zmqSocketType);
@@ -97,4 +95,9 @@ class Server extends Client implements ServerInterface
 
         $this->getSession()->publish($channel, [$entryData]);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function createSubscriptions($session, $transport) { }
 }

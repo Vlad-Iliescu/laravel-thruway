@@ -3,6 +3,9 @@
 namespace LaravelThruway;
 
 
+use Thruway\ClientSession;
+use Thruway\Transport\TransportInterface;
+
 interface ServerInterface
 {
     /**
@@ -11,4 +14,10 @@ interface ServerInterface
      * @param string $msg
      */
     public function onEntry($msg);
+
+    /**
+     * @param ClientSession $session
+     * @param TransportInterface $transport
+     */
+    public function createSubscriptions($session, $transport);
 }
